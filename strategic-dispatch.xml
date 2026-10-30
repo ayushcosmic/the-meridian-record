@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+  <b:if cond='data:blog.metaDescription'>
+    <meta expr:content='data:blog.metaDescription' name='description'/>
+  <b:else/>
+    <meta content='Independent reporting and clear-eyed analysis of India, world affairs, geopolitics, defence, trade, science and technology.' name='description'/>
+  </b:if>
+  <meta content='#142b45' name='theme-color'/>
+  <b:if cond='data:blog.pageType == "item"'>
+    <meta expr:content='data:blog.pageName' property='og:title'/>
+    <meta expr:content='data:blog.metaDescription' property='og:description'/>
+    <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+    <meta content='article' property='og:type'/>
+    <meta expr:content='data:blog.postImageUrl' property='og:image'/>
+  <b:else/>
+    <meta expr:content='data:blog.title' property='og:title'/>
+    <meta expr:content='data:blog.metaDescription' property='og:description'/>
+    <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+    <meta content='website' property='og:type'/>
+  </b:if>
+  <meta content='summary_large_image' name='twitter:card'/>
+  <meta expr:content='data:blog.pageTitle' name='twitter:title'/>
+  <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+  <script type='application/ld+json'>
+    {"@context":"https://schema.org","@type":"WebSite","name":"The Strategic Dispatch","url":"<data:blog.homepageUrl/>"}
+  </script>
+  <b:skin><![CDATA[
+/*
+  The Strategic Dispatch — Blogger editorial theme
+  Colors: navy #142b45, red #b52e35, paper #ffffff
+*/
+:root{--ink:#17212b;--muted:#66717d;--navy:#142b45;--red:#b52e35;--line:#dce1e6;--paper:#fff;--soft:#f4f6f8;--max:1200px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Georgia,"Times New Roman",serif}
+a{color:var(--navy);text-decoration:none}
+a:hover,a:focus{text-decoration:underline;color:var(--red)}
+img{max-width:100%;height:auto}
+.skip-link{position:absolute;left:-9999px;top:0;background:#fff;padding:10px;z-index:20}
+.skip-link:focus{left:10px}
+.wrap{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
+.site-header{border-bottom:1px solid var(--line);background:#fff}
+.masthead{padding:24px 0 18px;text-align:center}
+.brand{display:inline-block;font:700 clamp(30px,5vw,52px)/1.05 Georgia,"Times New Roman",serif;letter-spacing:-1.6px;color:var(--navy)}
+.brand-mark{display:inline-grid;place-items:center;vertical-align:middle;width:39px;height:39px;margin-right:10px;border:2px solid var(--red);color:var(--red);font:700 19px/1 Arial,sans-serif;letter-spacing:0}
+.tagline{margin:8px 0 0;color:var(--muted);font:12px/1.4 Arial,sans-serif;letter-spacing:1.6px;text-transform:uppercase}
+.nav-wrap{border-top:1px solid var(--line);background:#fff}
+.main-nav{display:flex;justify-content:center;align-items:center;gap:0;min-height:48px}
+.main-nav a{padding:13px 15px;color:var(--ink);font:700 12px/1.2 Arial,sans-serif;letter-spacing:.45px;text-transform:uppercase}
+.main-nav a:hover,.main-nav a:focus{color:var(--red)}
+.menu-toggle{display:none}
+.page{padding:30px 0 60px}
+.content-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}
+.ad-row{grid-column:1/-1}
+.section-kicker{display:flex;align-items:center;gap:12px;margin:0 0 18px;color:var(--red);font:700 12px/1.3 Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase}
+.section-kicker:after{content:"";height:1px;background:var(--line);flex:1}
+.featured{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(230px,.8fr);gap:24px;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.featured-image,.post-image{display:block;overflow:hidden;background:var(--soft)}
+.featured-image img{display:block;width:100%;height:100%;min-height:270px;max-height:380px;object-fit:cover}
+.featured-copy{align-self:center}
+.eyebrow,.post-meta,.byline,.small-meta{font:12px/1.5 Arial,sans-serif;color:var(--muted)}
+.eyebrow{margin:0 0 10px;color:var(--red);font-weight:700;letter-spacing:.9px;text-transform:uppercase}
+.featured h1,.featured h2{margin:0 0 12px;font:700 clamp(28px,3.8vw,42px)/1.12 Georgia,"Times New Roman",serif;letter-spacing:-.7px}
+.featured-summary{margin:0 0 14px;color:#414c57;font-size:17px}
+.byline{margin:0}
+.article-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 22px}
+.article-card{min-width:0}
+.article-card .post-image img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.article-card h2{margin:10px 0 6px;font:700 21px/1.25 Georgia,"Times New Roman",serif}
+.article-card .post-summary{margin:0 0 8px;color:#4d5862;font-size:15px}
+.post-meta{display:flex;flex-wrap:wrap;gap:6px 12px}
+.label-link{color:var(--red);font-weight:700}
+.text-card{padding:0 0 18px;border-bottom:1px solid var(--line)}
+.text-card h2{margin:6px 0;font:700 21px/1.25 Georgia,"Times New Roman",serif}
+.sidebar{font-family:Arial,sans-serif}
+.sidebar-box{padding:18px;margin:0 0 22px;background:var(--soft);border-top:3px solid var(--navy)}
+.sidebar-box h2{margin:0 0 12px;color:var(--navy);font:700 14px/1.3 Arial,sans-serif;letter-spacing:.7px;text-transform:uppercase}
+.sidebar-box p{margin:0;color:#46515c;font:14px/1.6 Arial,sans-serif}
+.sidebar .widget{margin:0 0 22px;padding:18px;background:var(--soft);border-top:3px solid var(--navy)}
+.sidebar .widget h2{margin:0 0 12px;font:700 14px/1.3 Arial,sans-serif;letter-spacing:.7px;text-transform:uppercase}
+.sidebar .widget ul{margin:0;padding:0;list-style:none}
+.sidebar .widget li{padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.category-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px 0}
+.category-panel{padding:16px;border:1px solid var(--line);border-left:3px solid var(--red)}
+.category-panel a{font:700 17px/1.3 Georgia,"Times New Roman",serif}
+.category-panel p{margin:5px 0 0;color:var(--muted);font:13px/1.5 Arial,sans-serif}
+.pager{display:flex;justify-content:space-between;gap:12px;margin:34px 0;font:700 13px Arial,sans-serif}
+.pager a{padding:10px 14px;border:1px solid var(--line)}
+.article-header{max-width:850px;margin:0 auto 24px}
+.article-header h1{margin:8px 0 12px;font:700 clamp(34px,5.5vw,56px)/1.08 Georgia,"Times New Roman",serif;letter-spacing:-1px}
+.article-deck{margin:0 0 15px;color:#46515c;font-size:20px;line-height:1.5}
+.article-hero{margin:0 auto 26px;max-width:1000px}
+.article-hero img{display:block;width:100%;max-height:620px;object-fit:cover}
+.article-hero figcaption{padding:7px 0;color:var(--muted);font:12px/1.5 Arial,sans-serif}
+.article-body{max-width:760px;margin:0 auto;font-size:19px;line-height:1.8}
+.article-body h2{margin:34px 0 10px;font:700 30px/1.2 Georgia,"Times New Roman",serif}
+.article-body h3{margin:26px 0 8px;font:700 23px/1.25 Georgia,"Times New Roman",serif}
+.article-body p{margin:0 0 1.25em}
+.article-body img{height:auto}
+.article-body blockquote{margin:26px 0;padding:4px 20px;border-left:4px solid var(--red);color:#44505c;font-size:22px}
+.article-body ul,.article-body ol{padding-left:1.4em}
+.article-body a{text-decoration:underline;text-underline-offset:2px}
+.article-tools{max-width:760px;margin:28px auto;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:13px Arial,sans-serif}
+.article-tools a{margin-right:14px}
+.related{max-width:900px;margin:36px auto}
+.related h2{font:700 22px Georgia,"Times New Roman",serif}
+.comments{max-width:760px;margin:35px auto}
+.site-footer{padding:28px 0;background:var(--navy);color:#fff;font-family:Arial,sans-serif}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:center}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 18px}
+.site-footer a{color:#fff;font-size:13px}
+.footer-note{margin:0;color:#d4dce4;font-size:12px}
+.ad-slot{display:none}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:900px){.content-layout{grid-template-columns:minmax(0,1fr) 250px;gap:24px}.featured{grid-template-columns:1fr}.featured-image img{min-height:0;max-height:420px;aspect-ratio:16/9}}
+@media(max-width:700px){.wrap{width:min(calc(100% - 28px),var(--max))}.masthead{padding:20px 0 15px}.brand{font-size:34px}.brand-mark{width:32px;height:32px;font-size:16px}.nav-wrap{position:relative}.menu-toggle{display:block;width:100%;padding:13px 15px;border:0;background:#fff;color:var(--navy);font:700 13px Arial,sans-serif;text-align:left}.main-nav{display:none;align-items:stretch;flex-direction:column;border-top:1px solid var(--line)}.main-nav.is-open{display:flex}.main-nav a{padding:13px 15px;border-bottom:1px solid var(--line)}.page{padding-top:22px}.content-layout{display:block}.sidebar{margin-top:36px}.article-grid{gap:22px 14px}.article-card h2{font-size:19px}.article-body{font-size:18px}.article-body h2{font-size:27px}}
+@media(max-width:480px){.brand{font-size:29px;letter-spacing:-1px}.brand-mark{width:28px;height:28px;margin-right:6px;font-size:14px}.tagline{font-size:10px;letter-spacing:1px}.article-grid,.category-panels{grid-template-columns:1fr}.featured h1,.featured h2{font-size:32px}.article-header h1{font-size:37px}.article-deck{font-size:18px}.article-card .post-image img{aspect-ratio:16/9}}
+  ]]></b:skin>
+</head>
+<body>
+  <a class='skip-link' href='#main-content'>Skip to content</a>
+  <header class='site-header'>
+    <div class='masthead wrap'>
+      <a class='brand' expr:href='data:blog.homepageUrl' aria-label='The Strategic Dispatch home'><span aria-hidden='true' class='brand-mark'>SD</span>The Strategic Dispatch</a>
+      <p class='tagline'>Independent reporting. Clear-eyed analysis.</p>
+    </div>
+    <div class='nav-wrap'>
+      <button aria-controls='primary-navigation' aria-expanded='false' class='menu-toggle' id='menu-toggle' type='button'>Menu <span aria-hidden='true'>☰</span></button>
+      <nav aria-label='Primary navigation' class='main-nav wrap' id='primary-navigation'>
+        <a expr:href='data:blog.homepageUrl'>Home</a>
+        <a href='/search/label/India'>India</a>
+        <a href='/search/label/World'>World</a>
+        <a href='/search/label/Geopolitics'>Geopolitics</a>
+        <a href='/search/label/Defence'>Defence</a>
+        <a href='/search/label/Economy'>Economy</a>
+        <a href='/search/label/Explainers'>Explainers</a>
+        <a href='/search/label/Science%20%26%20Technology'>Science &amp; Technology</a>
+      </nav>
+    </div>
+  </header>
+  <main class='page wrap' id='main-content'>
+    <div class='content-layout'>
+      <b:section class='ad-row' id='topad' maxwidgets='1' showaddelement='yes'></b:section>
+      <div class='main-column'>
+    <b:section class='main-section' id='main' maxwidgets='1' showaddelement='no'>
+      <b:widget id='Blog1' locked='true' title='Posts' type='Blog' version='2' visible='true'>
+        <b:widget-settings>
+          <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+          <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+          <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+          <b:widget-setting name='showAuthor'>true</b:widget-setting>
+          <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+          <b:widget-setting name='showLabels'>true</b:widget-setting>
+          <b:widget-setting name='showLocation'>false</b:widget-setting>
+        </b:widget-settings>
+        <b:includable id='main' var='this'>
+          <b:if cond='data:blog.pageType in {"item", "static_page"}'>
+            <b:loop values='data:posts' var='post'>
+              <article class='article' itemscope='itemscope' expr:itemtype='data:blog.pageType == "item" ? "https://schema.org/BlogPosting" : "https://schema.org/WebPage"'>
+                <header class='article-header'>
+                  <b:if cond='data:blog.pageType == "item"'>
+                    <p class='eyebrow'>
+                      <b:loop values='data:post.labels' var='label'><a class='label-link' expr:href='data:label.url' itemprop='articleSection'><data:label.name/></a><span> / </span></b:loop>
+                    </p>
+                    <h1 itemprop='headline'><data:post.title/></h1>
+                    <div class='article-deck' itemprop='description'><data:post.snippet/></div>
+                    <p class='byline'>By <span itemprop='author' itemscope='itemscope' itemtype='https://schema.org/Person'><span itemprop='name'><data:post.author/></span></span>
+                      <span aria-hidden='true'> · </span><time expr:datetime='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></time>
+                      <meta expr:content='data:post.timestampISO8601' itemprop='dateModified'/>
+                    </p>
+                  <b:else/>
+                    <h1 itemprop='name'><data:post.title/></h1>
+                  </b:if>
+                </header>
+                <div class='article-body' expr:itemprop='data:blog.pageType == "item" ? "articleBody" : "text"'><data:post.body/></div>
+                <b:if cond='data:blog.pageType == "item"'>
+                  <meta expr:content='data:post.url' itemprop='mainEntityOfPage'/>
+                  <span itemprop='publisher' itemscope='itemscope' itemtype='https://schema.org/Organization'><meta expr:content='data:blog.title' itemprop='name'/></span>
+                  <div class='article-tools' aria-label='Share this article'>
+                    <strong>Share:</strong>
+                    <a expr:href='"https://www.facebook.com/sharer/sharer.php?u=" + data:post.url' rel='noopener noreferrer' target='_blank'>Facebook</a>
+                    <a expr:href='"https://twitter.com/intent/tweet?url=" + data:post.url + "&amp;text=" + data:post.title' rel='noopener noreferrer' target='_blank'>X</a>
+                    <a expr:href='"https://www.linkedin.com/sharing/share-offsite/?url=" + data:post.url' rel='noopener noreferrer' target='_blank'>LinkedIn</a>
+                  </div>
+                  <section aria-label='Reader comments' class='comments' id='comments'>
+                    <h2>Reader comments</h2>
+                    <b:if cond='data:post.comments'>
+                      <b:loop values='data:post.comments' var='comment'>
+                        <article class='comment'>
+                          <p class='small-meta'>
+                            <b:if cond='data:comment.authorUrl'><a expr:href='data:comment.authorUrl' rel='nofollow'><data:comment.author/></a><b:else/><data:comment.author/></b:if>
+                            <span aria-hidden='true'> · </span><data:comment.timestamp/>
+                          </p>
+                          <b:if cond='data:comment.isDeleted'><p>This comment has been removed.</p><b:else/><div><data:comment.body/></div></b:if>
+                        </article>
+                      </b:loop>
+                    </b:if>
+                    <b:if cond='data:post.allowComments'><p><a expr:href='data:post.addCommentUrl'>Leave a comment</a></p></b:if>
+                  </section>
+                </b:if>
+              </article>
+            </b:loop>
+          <b:else/>
+            <b:if cond='data:blog.pageType == "index"'>
+              <b:if cond='data:posts'>
+                <b:loop values='data:posts' var='post' index='postIndex'>
+                  <b:if cond='data:postIndex == 0'>
+                    <section aria-label='Featured story' class='featured'>
+                      <a class='featured-image' expr:href='data:post.url'>
+                        <b:if cond='data:post.thumbnailUrl'><img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl' fetchpriority='high'/></b:if>
+                      </a>
+                      <div class='featured-copy'>
+                        <p class='eyebrow'>Featured story</p>
+                        <h1><a expr:href='data:post.url'><data:post.title/></a></h1>
+                        <p class='featured-summary'><data:post.snippet/></p>
+                        <p class='byline'>By <data:post.author/> · <data:post.timestamp/></p>
+                      </div>
+                    </section>
+                  </b:if>
+                </b:loop>
+              </b:if>
+                  <h2 class='section-kicker'>Latest articles</h2>
+                  <div class='article-grid'>
+                    <b:loop values='data:posts' var='post' index='postIndex'>
+                      <b:if cond='data:postIndex != 0'>
+                        <article class='article-card'>
+                          <b:if cond='data:post.thumbnailUrl'><a class='post-image' expr:href='data:post.url'><img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl' loading='lazy'/></a></b:if>
+                          <p class='eyebrow'><b:loop values='data:post.labels' var='label'><a class='label-link' expr:href='data:label.url'><data:label.name/></a><span> · </span></b:loop></p>
+                          <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                          <p class='post-summary'><data:post.snippet/></p>
+                          <p class='post-meta'><span><data:post.author/></span><span><data:post.timestamp/></span></p>
+                        </article>
+                      </b:if>
+                    </b:loop>
+                  </div>
+                  <b:if cond='data:blog.pageType == "index"'>
+                    <section aria-label='Browse by section' class='category-panels'>
+                      <div class='category-panel'><a href='/search/label/India'>India &amp; Foreign Policy</a><p>Reporting and analysis on India’s place in the world.</p></div>
+                      <div class='category-panel'><a href='/search/label/World'>World News</a><p>Developments shaping countries and communities.</p></div>
+                      <div class='category-panel'><a href='/search/label/Geopolitics'>Geopolitics</a><p>Power, diplomacy and international relations.</p></div>
+                      <div class='category-panel'><a href='/search/label/Defence'>Defence &amp; Maritime Security</a><p>Security, strategy and the global commons.</p></div>
+                      <div class='category-panel'><a href='/search/label/Economy'>Global Economy &amp; Trade</a><p>Trade, markets and economic policy.</p></div>
+                      <div class='category-panel'><a href='/search/label/Explainers'>Explainers &amp; Strategic Analysis</a><p>Context and insight behind the headlines.</p></div>
+                      <div class='category-panel'><a href='/search/label/Science%20%26%20Technology'>Science &amp; Technology</a><p>Ideas and technologies transforming societies.</p></div>
+                    </section>
+                  </b:if>
+            <b:else/>
+                  <h1 class='section-kicker'><data:blog.pageName/></h1>
+                  <div class='article-grid'>
+                    <b:loop values='data:posts' var='post'>
+                      <article class='article-card'>
+                        <b:if cond='data:post.thumbnailUrl'><a class='post-image' expr:href='data:post.url'><img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl' loading='lazy'/></a></b:if>
+                        <h2><a expr:href='data:post.url'><data:post.title/></a></h2>
+                        <p class='post-summary'><data:post.snippet/></p>
+                        <p class='post-meta'><data:post.author/><span><data:post.timestamp/></span></p>
+                      </article>
+                    </b:loop>
+                  </div>
+            </b:if>
+          </b:if>
+          <nav aria-label='Post navigation' class='pager'>
+            <b:if cond='data:newerPageUrl'><a expr:href='data:newerPageUrl'>← Newer posts</a></b:if>
+            <b:if cond='data:olderPageUrl'><a expr:href='data:olderPageUrl'>Older posts →</a></b:if>
+          </nav>
+        </b:includable>
+      </b:widget>
+    </b:section>
+      </div>
+      <aside aria-label='More from The Strategic Dispatch' class='sidebar'>
+        <div class='sidebar-box'><h2>About this publication</h2><p>Independent reporting and analysis on the forces shaping India and the world.</p></div>
+        <b:section class='sidebar-widgets' id='sidebar' maxwidgets='6' showaddelement='yes'>
+          <b:widget id='PopularPosts1' locked='false' title='Popular articles' type='PopularPosts' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>false</b:widget-setting>
+              <b:widget-setting name='showSnippets'>true</b:widget-setting>
+              <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+          <b:widget id='Label1' locked='false' title='Topics' type='Label' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </aside>
+    </div>
+  </main>
+  <footer class='site-footer'>
+    <div class='footer-inner wrap'>
+      <nav aria-label='Footer navigation' class='footer-links'>
+        <a href='/p/about.html'>About</a>
+        <a href='/p/contact.html'>Contact</a>
+        <a href='/p/editorial-policy.html'>Editorial Policy</a>
+        <a href='/p/privacy-policy.html'>Privacy Policy</a>
+        <a href='/p/disclaimer.html'>Disclaimer</a>
+        <a expr:href='data:blog.homepageUrl + "sitemap.xml"'>Sitemap</a>
+      </nav>
+      <p class='footer-note'>© <data:blog.title/>. Independent journalism and analysis.</p>
+    </div>
+  </footer>
+  <script type='text/javascript'>
+  //<![CDATA[
+  (function(){
+    var button=document.getElementById('menu-toggle');
+    var menu=document.getElementById('primary-navigation');
+    if(!button||!menu){return;}
+    button.addEventListener('click',function(){
+      var isOpen=menu.classList.toggle('is-open');
+      button.setAttribute('aria-expanded',isOpen?'true':'false');
+    });
+  }());
+  //]]>
+  </script>
+</body>
+</html>
