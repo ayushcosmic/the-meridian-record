@@ -188,6 +188,52 @@ mongorestore --uri="mongodb://127.0.0.1:27017/meridian_record" --drop "C:\backup
 
 ---
 
+## Deployment on Vercel + Render
+
+This project is already prepared for a typical Vercel + Render deployment:
+
+- The Express API is configured in `render.yaml` with a health check at `/api/health`.
+- The React/Vite frontend is configured in `client/vercel.json` for SPA routing.
+- The frontend expects a `VITE_API_URL` environment variable to point to the deployed Render API.
+
+### Vercel frontend setup
+1. Import the GitHub repository into Vercel.
+2. Set the project root to the `client/` folder if you deploy the frontend as a separate app.
+3. Add this environment variable in the Vercel dashboard:
+
+```bash
+VITE_API_URL=https://your-render-service.onrender.com
+```
+
+4. Keep the default `npm install` and `npm run build` commands for the Vite app.
+
+### Render backend setup
+1. Create a new Render Web Service and connect the same repo.
+2. In the service settings, use the included `render.yaml` file.
+3. Add or confirm the production environment variables:
+
+```bash
+NODE_ENV=production
+PORT=10000
+CLIENT_URL=https://your-vercel-app.vercel.app
+SITE_URL=https://your-vercel-app.vercel.app
+MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>/<db>
+JWT_SECRET=<long-random-secret>
+ADMIN_EMAIL=editor@meridianrecord.com
+ADMIN_PASSWORD=<strong-admin-password>
+COOKIE_SECURE=true
+```
+
+4. Deploy the service and verify `https://your-render-service.onrender.com/api/health` returns `200 OK`.
+
+### Local production-like checks
+```powershell
+npm.cmd run build
+npm.cmd test -w server
+```
+
+---
+
 ## Production Deployment & HTTPS Checklist
 
 1. **Enforce HTTPS:** Set `COOKIE_SECURE=true` and `NODE_ENV=production` in production environment variables. Admin session cookies will strictly require HTTPS.

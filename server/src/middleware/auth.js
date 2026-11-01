@@ -44,7 +44,7 @@ export function requireSameOrigin(req, res, next) {
   if (origin) {
     const norm = origin.replace(/\/$/, "");
     const allowed = allowedOrigins.includes(norm) || allowedOrigins.some((ao) => norm.endsWith(".vercel.app"));
-    if (!allowed && process.env.NODE_ENV === "production") {
+    if (!allowed) {
       logSecurityEvent("CSRF_ORIGIN_MISMATCH", { ip: req.ip, origin, expected: allowedOrigins, path: req.originalUrl });
       return res.status(403).json({ error: "Request origin is not allowed." });
     }
