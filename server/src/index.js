@@ -1,5 +1,6 @@
 import "./config/env.js";
 import "express-async-errors";
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import express from "express";
@@ -260,8 +261,8 @@ ${items}
 });
 
 // Serve production frontend bundle
-if (process.env.NODE_ENV === "production") {
-  const clientDist = path.join(root, "client", "dist");
+const clientDist = path.resolve(root, "..", "client", "dist");
+if (process.env.NODE_ENV === "production" && existsSync(clientDist)) {
   app.use(express.static(clientDist, { index: false, maxAge: "1d" }));
   app.get("*", (req, res, next) => {
     if (req.path.startsWith("/api/")) return next();

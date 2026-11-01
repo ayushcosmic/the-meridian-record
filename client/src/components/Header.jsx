@@ -56,11 +56,11 @@ export default function Header() {
       .catch((err) => console.debug("Categories:", err.message));
 
     api("/articles/breaking")
-      .then((data) => setBreaking(data.articles || []))
+      .then((data) => setBreaking(Array.isArray(data?.articles) ? data.articles : []))
       .catch((err) => console.debug("Breaking:", err.message));
 
     api("/settings/public")
-      .then((data) => setSettings(data.settings))
+      .then((data) => setSettings(data?.settings || null))
       .catch((err) => console.debug("Settings:", err.message));
   }, []);
 

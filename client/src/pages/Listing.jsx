@@ -42,11 +42,12 @@ export default function Listing() {
 
     try {
       const data = await api(`/articles?${searchParams}`);
-      setPayload(data);
+      setPayload(data || {});
+      const articles = Array.isArray(data?.articles) ? data.articles : [];
       if (reset) {
-        setAllArticles(data.articles || []);
+        setAllArticles(articles);
       } else {
-        setAllArticles(prev => [...prev, ...(data.articles || [])]);
+        setAllArticles(prev => [...prev, ...articles]);
       }
 
       if (slug) {

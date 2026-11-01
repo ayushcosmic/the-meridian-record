@@ -86,9 +86,9 @@ export default function Admin() {
       ]);
 
       setOverview(stats);
-      setArticles(articleData.articles || []);
-      setCategories(categoryData.categories || []);
-      setSubscribers(subscriberData.subscribers || []);
+      setArticles(Array.isArray(articleData?.articles) ? articleData.articles : []);
+      setCategories(Array.isArray(categoryData?.categories) ? categoryData.categories : []);
+      setSubscribers(Array.isArray(subscriberData?.subscribers) ? subscriberData.subscribers : []);
       if (settingsData?.settings) setSettingsForm(settingsData.settings);
     } catch (err) {
       console.debug("Refresh error:", err.message);

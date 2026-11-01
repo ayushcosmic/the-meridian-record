@@ -8,6 +8,8 @@ import Newsletter from "../components/Newsletter";
 import { EmptyState, ErrorState, SkeletonLead, SkeletonCard } from "../components/States";
 import { timeAgo } from "../lib/format";
 
+const normalizeArticles = (value) => (Array.isArray(value) ? value : []);
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -47,19 +49,19 @@ export default function Home() {
         api("/settings/public").catch(() => ({ settings: null }))
       ]);
 
-      setHeroPackage(heroData);
-      setPopularStories(popularData.articles || []);
+      setHeroPackage(heroData || {});
+      setPopularStories(normalizeArticles(popularData?.articles));
       setCategorySections({
-        geopolitics: geopoliticsData.articles || [],
-        india: indiaData.articles || [],
-        defence: defenceData.articles || [],
-        business: businessData.articles || [],
-        technology: technologyData.articles || [],
-        opinion: opinionData.articles || [],
-        science: scienceData.articles || [],
-        entertainment: entertainmentData.articles || []
+        geopolitics: normalizeArticles(geopoliticsData?.articles),
+        india: normalizeArticles(indiaData?.articles),
+        defence: normalizeArticles(defenceData?.articles),
+        business: normalizeArticles(businessData?.articles),
+        technology: normalizeArticles(technologyData?.articles),
+        opinion: normalizeArticles(opinionData?.articles),
+        science: normalizeArticles(scienceData?.articles),
+        entertainment: normalizeArticles(entertainmentData?.articles)
       });
-      setSettings(settingsData.settings);
+      setSettings(settingsData?.settings || null);
     } catch (err) {
       setError(err.message);
     } finally {
