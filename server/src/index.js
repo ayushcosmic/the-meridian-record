@@ -112,6 +112,16 @@ app.use(
 // Specific brute-force protection on admin login
 app.use("/api/auth/login", rateLimit(loginLimit));
 
+app.get("/", (req, res) =>
+  res.json({
+    service: "The Meridian Record API",
+    status: "ok",
+    website: clientUrl,
+    health: "/api/health",
+    articles: "/api/articles"
+  })
+);
+
 // Health check endpoint
 app.get("/api/health", (req, res) => res.json({ status: "ok", service: "The Meridian Record API", time: new Date().toISOString() }));
 

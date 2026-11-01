@@ -227,6 +227,7 @@ COOKIE_SECURE=true
 ```
 
 4. Deploy the service and verify `https://your-render-service.onrender.com/api/health` returns `200 OK`.
+   The service root (`https://your-render-service.onrender.com/`) returns API information; the website is served separately by Vercel.
 
 ### Local production-like checks
 ```powershell
