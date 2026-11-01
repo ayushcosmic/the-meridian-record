@@ -202,8 +202,10 @@ This project is already prepared for a typical Vercel + Render deployment:
 3. Add this environment variable in the Vercel dashboard:
 
 ```bash
-VITE_API_URL=https://your-render-service.onrender.com
+VITE_API_URL=https://your-render-service.onrender.com/api
 ```
+
+The client also appends `/api` when the URL is provided without that path.
 
 4. Keep the default `npm install` and `npm run build` commands for the Vite app.
 

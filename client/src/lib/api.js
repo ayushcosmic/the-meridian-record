@@ -1,4 +1,8 @@
-const API_URL = (import.meta.env.VITE_API_URL || (typeof window !== "undefined" && window.location.hostname === "localhost" ? "http://localhost:4000" : "")).replace(/\/$/, "");
+const configuredApiUrl =
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== "undefined" && window.location.hostname === "localhost" ? "http://localhost:4000" : "");
+const normalizedApiUrl = configuredApiUrl.replace(/\/+$/, "");
+const API_URL = normalizedApiUrl && !normalizedApiUrl.endsWith("/api") ? `${normalizedApiUrl}/api` : normalizedApiUrl;
 
 export async function api(path, options = {}) {
   if (!API_URL) {
